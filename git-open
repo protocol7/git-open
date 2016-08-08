@@ -101,6 +101,12 @@ else
   elif grep -q gitlab <<<$giturl; then
     giturl=${giturl/git\@gitlab\.com\:/https://gitlab.com/}
     providerUrlDifference=tree
+  else
+    # YOLO
+    giturl=${giturl/\://}
+    giturl=${giturl/git\@/https://}
+    # probably Github Enterprise or custom gitlab
+    providerUrlDifference=tree
   fi
 fi
 giturl=${giturl%\.git}
